@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2e3a70614e17479f815212ef6f0a874f" Name="Diagram1" ZoomLevel="100">
+        <EntityTypeShape EntityType="CakeDBModel.CakeDecoration" Width="1.5" PointX="3.375" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CakeDBModel.Equipment" Width="1.5" PointX="3.125" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CakeDBModel.EquipmentType" Width="1.5" PointX="0.875" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="CakeDBModel.Ingredients" Width="1.5" PointX="0.625" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CakeDBModel.Operations" Width="1.5" PointX="7.125" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CakeDBModel.Order" Width="1.5" PointX="8.875" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="CakeDBModel.Product" Width="1.5" PointX="3.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CakeDBModel.SpecCakeDecoration" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CakeDBModel.SpecIngredients" Width="1.5" PointX="7.5" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CakeDBModel.SpecSFProducts" Width="1.5" PointX="5.375" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CakeDBModel.sysdiagrams" Width="1.5" PointX="97.625" PointY="39.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CakeDBModel.Users" Width="1.5" PointX="4.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CakeDBModel.Vendor" Width="1.5" PointX="1.5" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="CakeDBModel.FK__cake_deco__Main___286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="CakeDBModel.FK__Spec_cake__Cake___02FC7413" ManuallyRouted="false" />
+        <AssociationConnector Association="CakeDBModel.FK__Equipment__Equip__07C12930" ManuallyRouted="false" />
+        <AssociationConnector Association="CakeDBModel.FK__operation__Equii__0F624AF8" ManuallyRouted="false" />
+        <AssociationConnector Association="CakeDBModel.FK__Ingridien__Main___276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="CakeDBModel.FK__Spec_infr__Ingre__7F2BE32F" ManuallyRouted="false" />
+        <AssociationConnector Association="CakeDBModel.FK__operation__Produ__0E6E26BF" ManuallyRouted="false" />
+        <AssociationConnector Association="CakeDBModel.FK__order__Manager__778AC167" ManuallyRouted="false" />
+        <AssociationConnector Association="CakeDBModel.FK__order__Product__75A278F5" ManuallyRouted="false" />
+        <AssociationConnector Association="CakeDBModel.FK__order__User__76969D2E" ManuallyRouted="false" />
+        <AssociationConnector Association="CakeDBModel.FK__Spec_cake__Produ__02084FDA" ManuallyRouted="false" />
+        <AssociationConnector Association="CakeDBModel.FK__Spec_infr__Produ__7E37BEF6" ManuallyRouted="false" />
+        <AssociationConnector Association="CakeDBModel.FK__Spec_SFPr__Produ__6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="CakeDBModel.FK__Spec_SFPr__SFPro__70DDC3D8" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CakeDBModel.Tools" Width="1.5" PointX="97.875" PointY="43.5" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

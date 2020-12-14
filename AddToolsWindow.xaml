@@ -1,0 +1,192 @@
+﻿<Window x:Class="Cakes.AddToolsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cakes"
+        mc:Ignorable="d"
+        Title="Добавить инструменты" Height="600" Width="800"
+        ResizeMode="NoResize">
+    <Grid>
+        <!--Разбиваем сетку-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Horizontal"
+                    Grid.ColumnSpan="2" Background="#FFFF9933">
+            <!--Добавляем логотип-->
+            <Image
+                Source="Resources\Logo_Monochrome.png">
+            </Image>
+
+            <!--И название-->
+            <TextBlock VerticalAlignment="Center"
+                Text="Jhonny's Cake!"
+                FontSize="18"
+                FontFamily="Comic Sans MS">
+            </TextBlock>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1"
+                    Grid.ColumnSpan="2"
+                    Grid.RowSpan="4"
+                    Background="#FFFF9933">
+        </StackPanel>
+
+        <StackPanel Grid.Row="5"
+                    Grid.ColumnSpan="2"
+                    Orientation="Horizontal"
+                    Background="#FF8F1A2A">
+        </StackPanel>
+
+        <StackPanel Grid.Row="5"
+                    Grid.Column="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+
+            <Button x:Name="ApplyChanges"
+                    Height="25"
+                    Width="100"
+                    Content="Сохранить"
+                    FontFamily="Comic Sans MS" Click="ApplyChanges_Click">
+            </Button>
+            <TextBlock Width="10"/>
+
+            <Button x:Name="BackToChiefWindow"
+                Height="25"
+                Width="100"
+                Content="Назад"
+                FontFamily="Comic Sans MS" Click="BackToChiefWindow_Click">
+            </Button>
+            <TextBlock Width="10"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1"
+                    Grid.RowSpan="4"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+
+            <TextBlock HorizontalAlignment="Center"
+                Text="Наименование:"
+                FontSize="18"
+                FontFamily="Comic Sans MS">
+            </TextBlock>
+
+            <!--Название инструмента-->
+            <TextBox x:Name="EnterToolName"
+                Height="25"
+                Width="200">
+            </TextBox>
+            <TextBlock Height="10"/>
+
+            <TextBlock HorizontalAlignment="Center"
+                Text="Тип:"
+                FontSize="18"
+                FontFamily="Comic Sans MS">
+            </TextBlock>
+
+            <!--Тип инструмента-->
+            <TextBox x:Name="EnterToolType"
+                Height="25"
+                Width="200">
+            </TextBox>
+            <TextBlock Height="10"/>
+
+            <TextBlock HorizontalAlignment="Center"
+                       Text="Описание: "
+                       FontSize="18"
+                       FontFamily="Comic Sans MS">
+            </TextBlock>
+
+            <!--Описание инструмента-->
+            <TextBox x:Name="EnterDescription"
+                     Height="25"
+                     Width="200">
+            </TextBox>
+            <TextBlock Height="10"/>
+
+            <TextBlock HorizontalAlignment="Center"
+                Text="Поставщик: "
+                FontSize="18"
+                FontFamily="Comic Sans MS">
+            </TextBlock>
+
+            <!--Поставщик-->
+            <TextBox x:Name="EnterProvider"
+                     Height="25"
+                     Width="200">
+            </TextBox>
+            <TextBlock Height="10"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1"
+                    Grid.RowSpan="4"
+                    Grid.Column="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+
+            <TextBlock HorizontalAlignment="Center"
+                Text="Дата приобретения:"
+                FontSize="18"
+                FontFamily="Comic Sans MS">
+            </TextBlock>
+
+            <!--Выбор даты приобретения-->
+            <DatePicker x:Name="SelectDateOfBuy"
+                        SelectedDateChanged="SelectDateOfBuy_SelectedDateChanged"
+                        Height="25"
+                        Width="200">
+            </DatePicker>
+            <TextBlock Height="10"/>
+
+            <TextBlock HorizontalAlignment="Center"
+                Text="Степень износа: "
+                FontSize="18"
+                FontFamily="Comic Sans MS">
+            </TextBlock>
+
+            <!--Износ инструмента-->
+            <TextBox x:Name="EnterWear"
+                Height="25"
+                Width="200">
+            </TextBox>
+            <TextBlock Height="10"/>
+
+            <TextBlock HorizontalAlignment="Center"
+                       Text="Количество: "
+                       FontSize="18"
+                       FontFamily="Comic Sans MS">
+            </TextBlock>
+
+            <!--Количество инструментов-->
+            <TextBox x:Name="EnterAmount"
+                     Height="25"
+                     Width="200">
+            </TextBox>
+            <TextBlock Height="10"/>
+
+            <TextBlock HorizontalAlignment="Center"
+                       Text="ID инструмента"
+                       FontSize="18"
+                       FontFamily="Comic Sans MS">
+            </TextBlock>
+
+            <!--ID инструмента-->
+            <TextBox x:Name="EnterID"
+                     Height="25"
+                     Width="200">
+            </TextBox>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,103 @@
+﻿<Window x:Class="Cakes.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Cakes"
+        mc:Ignorable="d"
+        Title="Авторизация" Height="500" Width="800"
+        ResizeMode="NoResize">
+    <Grid>
+        <!--Разбиваем сетку-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.RowSpan="3"
+                    VerticalAlignment="Center">
+            <!--Ставим логотип-->
+            <Image
+                Height="400"
+                Source="Resources\Logo_Color.png">
+            </Image>
+
+            <!--И название-->
+            <TextBlock
+                HorizontalAlignment="Center"
+                Text="Jhonny's Cake!"
+                FontFamily="Comic Sans MS"
+                FontSize="18">
+            </TextBlock>
+        </StackPanel>
+
+        <StackPanel Grid.RowSpan="3" Grid.Column="2"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+
+            <TextBlock HorizontalAlignment="Center"
+                Height="50"
+                Text="Вход"
+                FontSize="18"
+                FontFamily="Comic Sans MS">
+            </TextBlock>
+
+            <TextBlock HorizontalAlignment="Center"
+                Text="Логин:"
+                FontSize="18"
+                FontFamily="Comic Sans MS">
+            </TextBlock>
+
+            <!--Поле логина-->
+            <TextBox x:Name="EnterLogin"
+                     Height="25"
+                     Width="150">
+            </TextBox>
+
+            <TextBlock HorizontalAlignment="Center"
+                Text="Пароль:"
+                FontSize="18"
+                FontFamily="Comic Sans MS">
+            </TextBlock>
+
+            <!--Поле пароля-->
+            <PasswordBox x:Name="EnterPass"
+                Height="25"
+                Width="150">
+            </PasswordBox>
+            <TextBlock Height="50"/>
+
+            <!--Вход в приложение-->
+            <Button x:Name="EnterSystem"
+                    Height="25"
+                    Width="100"
+                    Content="Войти"
+                    FontFamily="Comic Sans MS" Click="EnterSystem_Click">
+            </Button>
+            <TextBlock Height="25"/>
+
+            <!--Окно регистрации-->
+            <Button x:Name="Registration"
+                    Height="25"
+                    Width="100"
+                    Content="Регистрация"
+                    FontFamily="Comic Sans MS" Click="Registration_Click">
+            </Button>
+            <TextBlock Height="25"/>
+
+            <!--Выход из программы-->
+            <Button x:Name="ExitSystem"
+                    Height="25"
+                    Width="100"
+                    Content="Выйти"
+                    FontFamily="Comic Sans MS" Click="ExitSystem_Click">
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

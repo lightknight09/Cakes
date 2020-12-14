@@ -1,0 +1,446 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CakeDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CakeDecoration">
+    <Key>
+      <PropertyRef Name="Vendor_name" />
+    </Key>
+    <Property Name="Vendor_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Units" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="Int32" />
+    <Property Name="Main_vendor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Weight" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Vendor" Relationship="Self.FK__cake_deco__Main___286302EC" FromRole="CakeDecoration" ToRole="Vendor" />
+    <NavigationProperty Name="SpecCakeDecoration" Relationship="Self.FK__Spec_cake__Cake___02FC7413" FromRole="CakeDecoration" ToRole="SpecCakeDecoration" />
+  </EntityType>
+  <EntityType Name="Equipment">
+    <Key>
+      <PropertyRef Name="Label" />
+    </Key>
+    <Property Name="Label" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Equipment_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Characteristics" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="EquipmentType" Relationship="Self.FK__Equipment__Equip__07C12930" FromRole="Equipment" ToRole="EquipmentType" />
+  </EntityType>
+  <EntityType Name="EquipmentType">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Size" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Equipment" Relationship="Self.FK__Equipment__Equip__07C12930" FromRole="EquipmentType" ToRole="Equipment" />
+    <NavigationProperty Name="Operations" Relationship="Self.FK__operation__Equii__0F624AF8" FromRole="EquipmentType" ToRole="Operations" />
+  </EntityType>
+  <EntityType Name="Ingredients">
+    <Key>
+      <PropertyRef Name="Vendor_code" />
+    </Key>
+    <Property Name="Vendor_code" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Units" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Amount" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Main_vendor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GOST" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Packaging" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Characteristic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Vendor" Relationship="Self.FK__Ingridien__Main___276EDEB3" FromRole="Ingredients" ToRole="Vendor" />
+    <NavigationProperty Name="SpecIngredients" Relationship="Self.FK__Spec_infr__Ingre__7F2BE32F" FromRole="Ingredients" ToRole="SpecIngredients" />
+  </EntityType>
+  <EntityType Name="Operations">
+    <Key>
+      <PropertyRef Name="Product" />
+      <PropertyRef Name="Operation" />
+      <PropertyRef Name="Serial_number" />
+    </Key>
+    <Property Name="Product" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Operation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Serial_number" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Equiipment_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Time_for_operation" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="EquipmentType" Relationship="Self.FK__operation__Equii__0F624AF8" FromRole="Operations" ToRole="EquipmentType" />
+    <NavigationProperty Name="Product1" Relationship="Self.FK__operation__Produ__0E6E26BF" FromRole="Operations" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Number" />
+      <PropertyRef Name="Date" />
+    </Key>
+    <Property Name="Number" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Product" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Manager" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Plan_comp_date" Type="DateTime" Precision="0" />
+    <Property Name="Examples" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__order__Manager__778AC167" FromRole="Order" ToRole="Users" />
+    <NavigationProperty Name="Product1" Relationship="Self.FK__order__Product__75A278F5" FromRole="Order" ToRole="Product" />
+    <NavigationProperty Name="Users1" Relationship="Self.FK__order__User__76969D2E" FromRole="Order" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Size" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Operations" Relationship="Self.FK__operation__Produ__0E6E26BF" FromRole="Product" ToRole="Operations" />
+    <NavigationProperty Name="Order" Relationship="Self.FK__order__Product__75A278F5" FromRole="Product" ToRole="Order" />
+    <NavigationProperty Name="SpecCakeDecoration" Relationship="Self.FK__Spec_cake__Produ__02084FDA" FromRole="Product" ToRole="SpecCakeDecoration" />
+    <NavigationProperty Name="SpecIngredients" Relationship="Self.FK__Spec_infr__Produ__7E37BEF6" FromRole="Product" ToRole="SpecIngredients" />
+    <NavigationProperty Name="SpecSFProducts" Relationship="Self.FK__Spec_SFPr__Produ__6FE99F9F" FromRole="Product" ToRole="SpecSFProducts" />
+    <NavigationProperty Name="SpecSFProducts1" Relationship="Self.FK__Spec_SFPr__SFPro__70DDC3D8" FromRole="Product" ToRole="SpecSFProducts" />
+  </EntityType>
+  <EntityType Name="SpecCakeDecoration">
+    <Key>
+      <PropertyRef Name="Product" />
+      <PropertyRef Name="Cake_decoration" />
+    </Key>
+    <Property Name="Product" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cake_decoration" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CakeDecoration" Relationship="Self.FK__Spec_cake__Cake___02FC7413" FromRole="SpecCakeDecoration" ToRole="CakeDecoration" />
+    <NavigationProperty Name="Product1" Relationship="Self.FK__Spec_cake__Produ__02084FDA" FromRole="SpecCakeDecoration" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="SpecIngredients">
+    <Key>
+      <PropertyRef Name="Product" />
+      <PropertyRef Name="Ingredient" />
+    </Key>
+    <Property Name="Product" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Ingredient" Type="Int32" Nullable="false" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Ingredients" Relationship="Self.FK__Spec_infr__Ingre__7F2BE32F" FromRole="SpecIngredients" ToRole="Ingredients" />
+    <NavigationProperty Name="Product1" Relationship="Self.FK__Spec_infr__Produ__7E37BEF6" FromRole="SpecIngredients" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="SpecSFProducts">
+    <Key>
+      <PropertyRef Name="Product" />
+      <PropertyRef Name="SFProduct" />
+    </Key>
+    <Property Name="Product" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SFProduct" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Product1" Relationship="Self.FK__Spec_SFPr__Produ__6FE99F9F" FromRole="SpecSFProducts" ToRole="Product" />
+    <NavigationProperty Name="Product2" Relationship="Self.FK__Spec_SFPr__SFPro__70DDC3D8" FromRole="SpecSFProducts" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Login" />
+    </Key>
+    <Property Name="Last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="First_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Order" Relationship="Self.FK__order__Manager__778AC167" FromRole="Users" ToRole="Order" />
+    <NavigationProperty Name="Order1" Relationship="Self.FK__order__User__76969D2E" FromRole="Users" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Vendor">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Adress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Date_of_delivery" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="CakeDecoration" Relationship="Self.FK__cake_deco__Main___286302EC" FromRole="Vendor" ToRole="CakeDecoration" />
+    <NavigationProperty Name="Ingredients" Relationship="Self.FK__Ingridien__Main___276EDEB3" FromRole="Vendor" ToRole="Ingredients" />
+  </EntityType>
+  <Association Name="FK__cake_deco__Main___286302EC">
+    <End Role="Vendor" Type="Self.Vendor" Multiplicity="0..1" />
+    <End Role="CakeDecoration" Type="Self.CakeDecoration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendor">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="CakeDecoration">
+        <PropertyRef Name="Main_vendor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Spec_cake__Cake___02FC7413">
+    <End Role="CakeDecoration" Type="Self.CakeDecoration" Multiplicity="1" />
+    <End Role="SpecCakeDecoration" Type="Self.SpecCakeDecoration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CakeDecoration">
+        <PropertyRef Name="Vendor_name" />
+      </Principal>
+      <Dependent Role="SpecCakeDecoration">
+        <PropertyRef Name="Cake_decoration" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Equipment__Equip__07C12930">
+    <End Role="EquipmentType" Type="Self.EquipmentType" Multiplicity="1" />
+    <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EquipmentType">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="Equipment">
+        <PropertyRef Name="Equipment_type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__operation__Equii__0F624AF8">
+    <End Role="EquipmentType" Type="Self.EquipmentType" Multiplicity="0..1" />
+    <End Role="Operations" Type="Self.Operations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EquipmentType">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="Operations">
+        <PropertyRef Name="Equiipment_type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ingridien__Main___276EDEB3">
+    <End Role="Vendor" Type="Self.Vendor" Multiplicity="0..1" />
+    <End Role="Ingredients" Type="Self.Ingredients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendor">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="Ingredients">
+        <PropertyRef Name="Main_vendor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Spec_infr__Ingre__7F2BE32F">
+    <End Role="Ingredients" Type="Self.Ingredients" Multiplicity="1" />
+    <End Role="SpecIngredients" Type="Self.SpecIngredients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ingredients">
+        <PropertyRef Name="Vendor_code" />
+      </Principal>
+      <Dependent Role="SpecIngredients">
+        <PropertyRef Name="Ingredient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__operation__Produ__0E6E26BF">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Operations" Type="Self.Operations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="Operations">
+        <PropertyRef Name="Product" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__order__Manager__778AC167">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Login" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="Manager" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__order__Product__75A278F5">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="Product" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__order__User__76969D2E">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Login" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Spec_cake__Produ__02084FDA">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="SpecCakeDecoration" Type="Self.SpecCakeDecoration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="SpecCakeDecoration">
+        <PropertyRef Name="Product" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Spec_infr__Produ__7E37BEF6">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="SpecIngredients" Type="Self.SpecIngredients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="SpecIngredients">
+        <PropertyRef Name="Product" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Spec_SFPr__Produ__6FE99F9F">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="SpecSFProducts" Type="Self.SpecSFProducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="SpecSFProducts">
+        <PropertyRef Name="Product" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Spec_SFPr__SFPro__70DDC3D8">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="SpecSFProducts" Type="Self.SpecSFProducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="SpecSFProducts">
+        <PropertyRef Name="SFProduct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CakeDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CakeDecoration" EntityType="Self.CakeDecoration" />
+    <EntitySet Name="Equipment" EntityType="Self.Equipment" />
+    <EntitySet Name="EquipmentType" EntityType="Self.EquipmentType" />
+    <EntitySet Name="Ingredients" EntityType="Self.Ingredients" />
+    <EntitySet Name="Operations" EntityType="Self.Operations" />
+    <EntitySet Name="Order" EntityType="Self.Order" />
+    <EntitySet Name="Product" EntityType="Self.Product" />
+    <EntitySet Name="SpecCakeDecoration" EntityType="Self.SpecCakeDecoration" />
+    <EntitySet Name="SpecIngredients" EntityType="Self.SpecIngredients" />
+    <EntitySet Name="SpecSFProducts" EntityType="Self.SpecSFProducts" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <EntitySet Name="Vendor" EntityType="Self.Vendor" />
+    <AssociationSet Name="FK__cake_deco__Main___286302EC" Association="Self.FK__cake_deco__Main___286302EC">
+      <End Role="Vendor" EntitySet="Vendor" />
+      <End Role="CakeDecoration" EntitySet="CakeDecoration" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Spec_cake__Cake___02FC7413" Association="Self.FK__Spec_cake__Cake___02FC7413">
+      <End Role="CakeDecoration" EntitySet="CakeDecoration" />
+      <End Role="SpecCakeDecoration" EntitySet="SpecCakeDecoration" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Equipment__Equip__07C12930" Association="Self.FK__Equipment__Equip__07C12930">
+      <End Role="EquipmentType" EntitySet="EquipmentType" />
+      <End Role="Equipment" EntitySet="Equipment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__operation__Equii__0F624AF8" Association="Self.FK__operation__Equii__0F624AF8">
+      <End Role="EquipmentType" EntitySet="EquipmentType" />
+      <End Role="Operations" EntitySet="Operations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ingridien__Main___276EDEB3" Association="Self.FK__Ingridien__Main___276EDEB3">
+      <End Role="Vendor" EntitySet="Vendor" />
+      <End Role="Ingredients" EntitySet="Ingredients" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Spec_infr__Ingre__7F2BE32F" Association="Self.FK__Spec_infr__Ingre__7F2BE32F">
+      <End Role="Ingredients" EntitySet="Ingredients" />
+      <End Role="SpecIngredients" EntitySet="SpecIngredients" />
+    </AssociationSet>
+    <AssociationSet Name="FK__operation__Produ__0E6E26BF" Association="Self.FK__operation__Produ__0E6E26BF">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Operations" EntitySet="Operations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__order__Manager__778AC167" Association="Self.FK__order__Manager__778AC167">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__order__Product__75A278F5" Association="Self.FK__order__Product__75A278F5">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__order__User__76969D2E" Association="Self.FK__order__User__76969D2E">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Spec_cake__Produ__02084FDA" Association="Self.FK__Spec_cake__Produ__02084FDA">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="SpecCakeDecoration" EntitySet="SpecCakeDecoration" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Spec_infr__Produ__7E37BEF6" Association="Self.FK__Spec_infr__Produ__7E37BEF6">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="SpecIngredients" EntitySet="SpecIngredients" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Spec_SFPr__Produ__6FE99F9F" Association="Self.FK__Spec_SFPr__Produ__6FE99F9F">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="SpecSFProducts" EntitySet="SpecSFProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Spec_SFPr__SFPro__70DDC3D8" Association="Self.FK__Spec_SFPr__SFPro__70DDC3D8">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="SpecSFProducts" EntitySet="SpecSFProducts" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="Tools" EntityType="CakeDBModel.Tools" />
+  </EntityContainer>
+  <EntityType Name="Tools">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="ToolName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ToolType" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="DateOfBuy" Type="DateTime" Precision="0" />
+    <Property Name="Amount" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Wear" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Provider" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

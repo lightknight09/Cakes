@@ -1,0 +1,419 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище CakeDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CakeDecoration">
+    <Key>
+      <PropertyRef Name="Vendor_name" />
+    </Key>
+    <Property Name="Vendor_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Units" Type="nvarchar" MaxLength="50" />
+    <Property Name="Amount" Type="int" />
+    <Property Name="Main_vendor" Type="nvarchar" MaxLength="50" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="Price" Type="nvarchar" MaxLength="50" />
+    <Property Name="Weight" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Equipment">
+    <Key>
+      <PropertyRef Name="Label" />
+    </Key>
+    <Property Name="Label" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Equipment_type" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Characteristics" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="EquipmentType">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Size" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ingredients">
+    <Key>
+      <PropertyRef Name="Vendor_code" />
+    </Key>
+    <Property Name="Vendor_code" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Units" Type="nvarchar" MaxLength="50" />
+    <Property Name="Amount" Type="nvarchar" MaxLength="50" />
+    <Property Name="Main_vendor" Type="nvarchar" MaxLength="50" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="Price" Type="nvarchar" MaxLength="50" />
+    <Property Name="GOST" Type="nvarchar" MaxLength="50" />
+    <Property Name="Packaging" Type="nvarchar" MaxLength="50" />
+    <Property Name="Characteristic" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Operations">
+    <Key>
+      <PropertyRef Name="Product" />
+      <PropertyRef Name="Operation" />
+      <PropertyRef Name="Serial_number" />
+    </Key>
+    <Property Name="Product" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Operation" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Serial_number" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Equiipment_type" Type="nvarchar" MaxLength="50" />
+    <Property Name="Time_for_operation" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Number" />
+      <PropertyRef Name="Date" />
+    </Key>
+    <Property Name="Number" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="smalldatetime" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Product" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="User" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Manager" Type="nvarchar" MaxLength="50" />
+    <Property Name="Price" Type="money" />
+    <Property Name="Plan_comp_date" Type="smalldatetime" />
+    <Property Name="Examples" Type="image" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Size" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SpecCakeDecoration">
+    <Key>
+      <PropertyRef Name="Product" />
+      <PropertyRef Name="Cake_decoration" />
+    </Key>
+    <Property Name="Product" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Cake_decoration" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SpecIngredients">
+    <Key>
+      <PropertyRef Name="Product" />
+      <PropertyRef Name="Ingredient" />
+    </Key>
+    <Property Name="Product" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Ingredient" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SpecSFProducts">
+    <Key>
+      <PropertyRef Name="Product" />
+      <PropertyRef Name="SFProduct" />
+    </Key>
+    <Property Name="Product" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SFProduct" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Tools">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="ToolName" Type="nvarchar" MaxLength="255" />
+    <Property Name="ToolType" Type="nvarchar" MaxLength="255" />
+    <Property Name="DateOfBuy" Type="date" />
+    <Property Name="Amount" Type="int" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="Wear" Type="nvarchar" MaxLength="255" />
+    <Property Name="Provider" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Login" />
+    </Key>
+    <Property Name="Last_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="First_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Role" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Vendor">
+    <Key>
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Adress" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Date_of_delivery" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__cake_deco__Main___286302EC">
+    <End Role="Vendor" Type="Self.Vendor" Multiplicity="0..1" />
+    <End Role="CakeDecoration" Type="Self.CakeDecoration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendor">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="CakeDecoration">
+        <PropertyRef Name="Main_vendor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Equipment__Equip__07C12930">
+    <End Role="EquipmentType" Type="Self.EquipmentType" Multiplicity="1" />
+    <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EquipmentType">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="Equipment">
+        <PropertyRef Name="Equipment_type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ingridien__Main___276EDEB3">
+    <End Role="Vendor" Type="Self.Vendor" Multiplicity="0..1" />
+    <End Role="Ingredients" Type="Self.Ingredients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendor">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="Ingredients">
+        <PropertyRef Name="Main_vendor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__operation__Equii__0F624AF8">
+    <End Role="EquipmentType" Type="Self.EquipmentType" Multiplicity="0..1" />
+    <End Role="Operations" Type="Self.Operations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EquipmentType">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="Operations">
+        <PropertyRef Name="Equiipment_type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__operation__Produ__0E6E26BF">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Operations" Type="Self.Operations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="Operations">
+        <PropertyRef Name="Product" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__order__Manager__778AC167">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Login" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="Manager" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__order__Product__75A278F5">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="Product" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__order__User__76969D2E">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Login" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Spec_cake__Cake___02FC7413">
+    <End Role="CakeDecoration" Type="Self.CakeDecoration" Multiplicity="1" />
+    <End Role="SpecCakeDecoration" Type="Self.SpecCakeDecoration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CakeDecoration">
+        <PropertyRef Name="Vendor_name" />
+      </Principal>
+      <Dependent Role="SpecCakeDecoration">
+        <PropertyRef Name="Cake_decoration" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Spec_cake__Produ__02084FDA">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="SpecCakeDecoration" Type="Self.SpecCakeDecoration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="SpecCakeDecoration">
+        <PropertyRef Name="Product" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Spec_infr__Ingre__7F2BE32F">
+    <End Role="Ingredients" Type="Self.Ingredients" Multiplicity="1" />
+    <End Role="SpecIngredients" Type="Self.SpecIngredients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ingredients">
+        <PropertyRef Name="Vendor_code" />
+      </Principal>
+      <Dependent Role="SpecIngredients">
+        <PropertyRef Name="Ingredient" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Spec_infr__Produ__7E37BEF6">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="SpecIngredients" Type="Self.SpecIngredients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="SpecIngredients">
+        <PropertyRef Name="Product" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Spec_SFPr__Produ__6FE99F9F">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="SpecSFProducts" Type="Self.SpecSFProducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="SpecSFProducts">
+        <PropertyRef Name="Product" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Spec_SFPr__SFPro__70DDC3D8">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="SpecSFProducts" Type="Self.SpecSFProducts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="Name" />
+      </Principal>
+      <Dependent Role="SpecSFProducts">
+        <PropertyRef Name="SFProduct" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="Хранилище CakeDBModelContainer">
+    <EntitySet Name="CakeDecoration" EntityType="Self.CakeDecoration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Equipment" EntityType="Self.Equipment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EquipmentType" EntityType="Self.EquipmentType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ingredients" EntityType="Self.Ingredients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Operations" EntityType="Self.Operations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SpecCakeDecoration" EntityType="Self.SpecCakeDecoration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SpecIngredients" EntityType="Self.SpecIngredients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SpecSFProducts" EntityType="Self.SpecSFProducts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tools" EntityType="Self.Tools" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vendor" EntityType="Self.Vendor" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__cake_deco__Main___286302EC" Association="Self.FK__cake_deco__Main___286302EC">
+      <End Role="Vendor" EntitySet="Vendor" />
+      <End Role="CakeDecoration" EntitySet="CakeDecoration" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Equipment__Equip__07C12930" Association="Self.FK__Equipment__Equip__07C12930">
+      <End Role="EquipmentType" EntitySet="EquipmentType" />
+      <End Role="Equipment" EntitySet="Equipment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ingridien__Main___276EDEB3" Association="Self.FK__Ingridien__Main___276EDEB3">
+      <End Role="Vendor" EntitySet="Vendor" />
+      <End Role="Ingredients" EntitySet="Ingredients" />
+    </AssociationSet>
+    <AssociationSet Name="FK__operation__Equii__0F624AF8" Association="Self.FK__operation__Equii__0F624AF8">
+      <End Role="EquipmentType" EntitySet="EquipmentType" />
+      <End Role="Operations" EntitySet="Operations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__operation__Produ__0E6E26BF" Association="Self.FK__operation__Produ__0E6E26BF">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Operations" EntitySet="Operations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__order__Manager__778AC167" Association="Self.FK__order__Manager__778AC167">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__order__Product__75A278F5" Association="Self.FK__order__Product__75A278F5">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__order__User__76969D2E" Association="Self.FK__order__User__76969D2E">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Spec_cake__Cake___02FC7413" Association="Self.FK__Spec_cake__Cake___02FC7413">
+      <End Role="CakeDecoration" EntitySet="CakeDecoration" />
+      <End Role="SpecCakeDecoration" EntitySet="SpecCakeDecoration" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Spec_cake__Produ__02084FDA" Association="Self.FK__Spec_cake__Produ__02084FDA">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="SpecCakeDecoration" EntitySet="SpecCakeDecoration" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Spec_infr__Ingre__7F2BE32F" Association="Self.FK__Spec_infr__Ingre__7F2BE32F">
+      <End Role="Ingredients" EntitySet="Ingredients" />
+      <End Role="SpecIngredients" EntitySet="SpecIngredients" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Spec_infr__Produ__7E37BEF6" Association="Self.FK__Spec_infr__Produ__7E37BEF6">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="SpecIngredients" EntitySet="SpecIngredients" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Spec_SFPr__Produ__6FE99F9F" Association="Self.FK__Spec_SFPr__Produ__6FE99F9F">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="SpecSFProducts" EntitySet="SpecSFProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Spec_SFPr__SFPro__70DDC3D8" Association="Self.FK__Spec_SFPr__SFPro__70DDC3D8">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="SpecSFProducts" EntitySet="SpecSFProducts" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
